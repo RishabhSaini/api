@@ -224,4 +224,7 @@ type MachineOSImageBuilderType string
 const (
 	// describes that the machine-os-builder will use a custom pod builder that uses buildah
 	PodBuilder MachineOSImageBuilderType = "PodImageBuilder"
+
+	// mosb will create an openshift-pipeline
+	PipelineBuilder MachineOSImageBuilderType = "PipelineImageBuilder"
 )
