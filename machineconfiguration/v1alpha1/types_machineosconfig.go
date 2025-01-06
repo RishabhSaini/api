@@ -163,8 +163,8 @@ type BuildOutputs struct {
 type MachineOSImageBuilder struct {
 	// imageBuilderType specifies the backend to be used to build the image.
 	// +kubebuilder:default:=PodImageBuilder
-	// +kubebuilder:validation:Enum:=PodImageBuilder
-	// Valid options are: PodImageBuilder
+	// +kubebuilder:validation:Enum:=PodImageBuilder;PipelineImageBuilder
+	// Valid options are: PodImageBuilder and PipelineImageBuilder
 	ImageBuilderType MachineOSImageBuilderType `json:"imageBuilderType"`
 }
 

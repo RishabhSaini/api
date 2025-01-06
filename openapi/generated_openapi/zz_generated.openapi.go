@@ -40255,7 +40255,7 @@ func schema_openshift_api_machineconfiguration_v1alpha1_MachineOSImageBuilder(re
 				Properties: map[string]spec.Schema{
 					"imageBuilderType": {
 						SchemaProps: spec.SchemaProps{
-							Description: "imageBuilderType specifies the backend to be used to build the image. Valid options are: PodImageBuilder",
+							Description: "imageBuilderType specifies the backend to be used to build the image. Valid options are: PodImageBuilder and PipelineImageBuilder",
 							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
