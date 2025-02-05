@@ -23152,6 +23152,10 @@
         "imageBuilderType"
       ],
       "properties": {
+        "buildPipeline": {
+          "description": "PipelineImageBuilder is used when ImageBuilderType is PipelineImageBuilder.",
+          "$ref": "#/definitions/com.github.openshift.api.machineconfiguration.v1alpha1.ObjectReference"
+        },
         "buildPod": {
           "description": "relatedObjects is a list of objects that are related to the build process.",
           "$ref": "#/definitions/com.github.openshift.api.machineconfiguration.v1alpha1.ObjectReference"
@@ -23166,6 +23170,7 @@
         {
           "discriminator": "imageBuilderType",
           "fields-to-discriminateBy": {
+            "buildPipeline": "PipelineImageBuilder",
             "buildPod": "PodImageBuilder"
           }
         }

@@ -39984,6 +39984,12 @@ func schema_openshift_api_machineconfiguration_v1alpha1_MachineOSBuilderReferenc
 							Ref:         ref("github.com/openshift/api/machineconfiguration/v1alpha1.ObjectReference"),
 						},
 					},
+					"buildPipeline": {
+						SchemaProps: spec.SchemaProps{
+							Description: "PipelineImageBuilder is used when ImageBuilderType is PipelineImageBuilder.",
+							Ref:         ref("github.com/openshift/api/machineconfiguration/v1alpha1.ObjectReference"),
+						},
+					},
 				},
 				Required: []string{"imageBuilderType"},
 			},
@@ -39993,7 +39999,8 @@ func schema_openshift_api_machineconfiguration_v1alpha1_MachineOSBuilderReferenc
 						map[string]interface{}{
 							"discriminator": "imageBuilderType",
 							"fields-to-discriminateBy": map[string]interface{}{
-								"buildPod": "PodImageBuilder",
+								"buildPipeline": "PipelineImageBuilder",
+								"buildPod":      "PodImageBuilder",
 							},
 						},
 					},
