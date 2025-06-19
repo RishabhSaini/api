@@ -146,14 +146,8 @@ type BuildInputs struct {
 	// +optional
 	Containerfile []MachineOSContainerfile `json:"containerFile" patchStrategy:"merge" patchMergeKey:"containerfileArch"`
 	// postBuildTasks references tekton tasks to run post os image build
-	// +patchMergeKey=tektonTasks
-	// +patchStrategy=merge
-	// +listType=map
-	// +listMapKey=tektonTasks
-	// +kubebuilder:validation:MinItems=0
-	// +kubebuilder:validation:MaxItems=7
 	// +optional
-	PostBuildTasks []string `json:"postBuildTasks" patchStrategy:"merge" patchMergeKey:"tektonTasks"` 
+	PostBuildTasks []string `json:"postBuildTasks"` 
 }
 
 // BuildOutputs holds all information needed to handle booting the image after a build

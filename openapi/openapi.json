@@ -22702,13 +22702,7 @@
           "items": {
             "type": "string",
             "default": ""
-          },
-          "x-kubernetes-list-map-keys": [
-            "tektonTasks"
-          ],
-          "x-kubernetes-list-type": "map",
-          "x-kubernetes-patch-merge-key": "tektonTasks",
-          "x-kubernetes-patch-strategy": "merge"
+          }
         },
         "releaseVersion": {
           "description": "releaseVersion is associated with the base OS Image. This is the version of Openshift that the Base Image is associated with. This field is populated from the machine-config-osimageurl configmap in the openshift-machine-config-operator namespace. It will come in the format: 4.16.0-0.nightly-2024-04-03-065948 or any valid release. The MachineOSBuilder populates this field and validates that this is a valid stream. This is used as a label in the dockerfile that builds the OS image.",
