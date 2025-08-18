@@ -59,7 +59,7 @@ type MachineOSConfigSpec struct {
 	// +required
 	MachineConfigPool MachineConfigPoolReference `json:"machineConfigPool"`
 	// imageBuilder describes which image builder will be used in each build triggered by this MachineOSConfig.
-	// Currently supported type(s): Job
+	// Currently supported type(s): Job, Pipeline
 	// +required
 	ImageBuilder MachineOSImageBuilder `json:"imageBuilder"`
 	// baseImagePullSecret is the secret used to pull the base image.
@@ -93,6 +93,9 @@ type MachineOSConfigSpec struct {
 	// +kubebuilder:validation:MaxItems=4
 	// +optional
 	Containerfile []MachineOSContainerfile `json:"containerFile" patchStrategy:"merge" patchMergeKey:"containerfileArch"`
+	// postBuildTasks references tekton tasks to run post os image build
+	// +optional
+	PostBuildTasks []string `json:"postBuildTasks"`
 }
 
 // MachineOSConfigStatus describes the status this config object and relates it to the builds associated with this MachineOSConfig
@@ -124,8 +127,8 @@ type MachineOSConfigStatus struct {
 
 type MachineOSImageBuilder struct {
 	// imageBuilderType specifies the backend to be used to build the image.
-	// +kubebuilder:validation:Enum:=Job
-	// Valid options are: Job
+	// +kubebuilder:validation:Enum:=Job;Pipeline
+	// Valid options are: Job, Pipeline
 	// +required
 	ImageBuilderType MachineOSImageBuilderType `json:"imageBuilderType"`
 }
@@ -212,4 +215,7 @@ type MachineOSImageBuilderType string
 const (
 	// describes that the machine-os-builder will use a Job to spin up a custom pod builder that uses buildah
 	JobBuilder MachineOSImageBuilderType = "Job"
+
+	// describes that the machine-os-builder will use a Pipeline to spin up a custom pod builder that uses buildah
+	PipelineBuilder MachineOSImageBuilderType = "Pipeline"
 )
